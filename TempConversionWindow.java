@@ -15,21 +15,18 @@ public class TempConversionWindow extends JFrame implements ActionListener{
 				      EXIT_ON_CLOSE);
 
 	pane = this.getContentPane();
-	pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
+	pane.setLayout(new FlowLayout());
 
-	JButton b = new JButton("ByteMe");
+	JButton b = new JButton("Celcius to Farenheit");
 	b.addActionListener(this);
 	b.setActionCommand("Byte");
-	JButton b2 = new JButton("No...");
+	JButton b2 = new JButton("Farenheit to Celcius");
 	b2.addActionListener(this);
 	b2.setActionCommand("NotByte");
 
 
-	t = new JTextField(10);
-
-	JCheckBox c = new JCheckBox("OverClock");
-	j = new JLabel("Meaning of life is... ");
-	pane.add(c);
+	t = new JTextField(5);
+	j = new JLabel(/*RETURN STATEMENT*/);
 	pane.add(t);
 	pane.add(b);
 	pane.add(b2);
@@ -39,12 +36,12 @@ public class TempConversionWindow extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e){
 	String event = e.getActionCommand();
 	if(event.equals("Byte")){
-	    String s = t.getText();
-	    s += "-0101000";
-	    j.setText(s);
+	    int s = Integer.parseInt(t.getText());
+	    j.setText(Integer.toString((((s * 9) / 5) + 32)));
 	}
 	if(event.equals("NotByte")){
-	    j.setText("Fish");
+	    int s = Integer.parseInt(t.getText());
+            j.setText(Integer.toString(((((s - 32) * 5) / 9))));
     
 	}
  
